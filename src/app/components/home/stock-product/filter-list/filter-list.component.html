@@ -1,0 +1,6 @@
+<div class="filter-list">
+  <p class="filter-list__tittle">Filters</p>
+  <app-filter-category></app-filter-category>
+  <app-filter-price [minPriceValue]="minPriceValue" [maxPriceValue]="maxPriceValue" (changeRangePriceEvent)="changeRangePriceEventListener($event)"></app-filter-price>
+  <app-filter-sort (clickHighToLowSortButtonEvent)="clickHighToLowSortButtonEventListener($event)" (clickLowToHighSortButtonEvent)="clickLowToHighSortButtonEventListener($event)"></app-filter-sort>
+</div>

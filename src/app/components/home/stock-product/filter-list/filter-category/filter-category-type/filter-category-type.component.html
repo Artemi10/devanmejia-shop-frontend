@@ -1,0 +1,6 @@
+<div class="filter-list__category__type">
+  <span class="filter-list__category__type_checkbox" (click)="clickCategoryTypeListener()">
+    <img [style.display]="isCheckBoxSelected ? 'block' : 'none'" class="filter-list__category__type_checkbox_selected" src="./assets/static/images/choose-icon.png">
+  </span>
+  <p class="filter-list__category__type_label">{{typeName}}</p>
+</div>

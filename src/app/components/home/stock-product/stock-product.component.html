@@ -1,0 +1,21 @@
+<app-slider></app-slider>
+<div class ="row no-gutters">
+  <div class="col-sm-12">
+    <h3 class="stock-product__tittle">Range of our products</h3>
+  </div>
+</div>
+<div class ="row no-gutters" >
+  <div class="col-lg-2 col-sm-3">
+    <app-filter-list [maxPriceValue]="stockProductService.getMaxValuePrice()" [minPriceValue]="stockProductService.getMinValuePrice()" (changeRangePriceEvent)="changeRangePriceEventListener($event)"
+                     (clickLowToHighSortButtonEvent)="clickLowToHighSortButtonEventListener($event)" (clickHighToLowSortButtonEvent)="clickHighToLowSortButtonEventListener($event)"></app-filter-list>
+  </div>
+  <div class="col-lg-10 col-sm-9">
+    <div class="row no-gutters">
+      <ng-container *ngFor="let stockProduct of stockProductService.priceRangeStockProducts">
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="showStockProduct(stockProduct)">
+          <app-product [stockProduct]="stockProduct"></app-product>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

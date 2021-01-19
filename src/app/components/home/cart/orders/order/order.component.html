@@ -1,0 +1,14 @@
+<div class="card mb-4 shadow-sm order" (click)="chooseOrderListener()">
+  <div class="order__order-id">
+    <p class="order__order-id__tittle">Order ID</p>
+    <p class="order__order-id__value">{{order.id}}</p>
+  </div>
+  <div class="order__receiver">
+    <p class="order__receiver__tittle">Receiver</p>
+    <p class="order__receiver__value">{{order.owner}}</p>
+  </div>
+  <div class="order__status">
+    <p class="order__status__tittle">Status</p>
+    <p class="order__status__value">{{order.orderStatus}}</p>
+  </div>
+</div>

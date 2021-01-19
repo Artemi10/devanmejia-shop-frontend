@@ -1,0 +1,12 @@
+<div class="cart-products__tittle">List of your products</div>
+<div class="cart-products__tittle_error-message" *ngIf="errorMessage != ''">{{errorMessage}}</div>
+<p class="cart-products__order-id">Order ID:{{orderId}}</p>
+<div class="col-sm-12" *ngFor="let cartProduct of cartProducts">
+  <app-cart-product [cartProduct]="cartProduct" [orderStatus]="orderStatus"></app-cart-product>
+</div>
+<p *ngIf="cartProducts.length === 0" class="cart-products_empty">Your cart is empty</p>
+<div class="cart-products__order-button">
+  <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOrderActive(orderStatus) && cartProducts.length != 0" (click)="buyButtonClickListener()">Buy</button>
+</div>
+
+

@@ -1,0 +1,15 @@
+.header__logo{
+  font-size: 25px;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+}
+.nav__link{
+  color: #c01934;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav__link:hover{
+  color: #939393;
+}
+
+

@@ -1,0 +1,12 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm header">
+  <h1 class="my-0 mr-md-auto font-weight-bold header__logo">ProductShop</h1>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a *ngIf="!isExisted()" class="p-2 home-href nav__link" routerLink="/logIn">LogIn</a>
+    <a *ngIf="!isExisted()" class="p-2 home-href nav__link" routerLink="/signUp">SignUp</a>
+    <a *ngIf="isExisted() && isHomePage()" class="nav__link" routerLink="/cart">
+      <app-product-amount></app-product-amount>
+    </a>
+    <a *ngIf="isExisted() && !isHomePage()" class="nav__link" routerLink="/">Home</a>
+    <a *ngIf="isExisted()" class="p-2 home-href nav__link" (click)="logOut()">Exit</a>
+  </nav>
+</div>

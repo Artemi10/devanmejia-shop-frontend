@@ -1,0 +1,28 @@
+.order{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+.order:hover{
+  border: solid 3px #939393;
+}
+.order__order-id,
+.order__receiver,
+.order__status{
+  width: 33%;
+  padding: 10px;
+}
+.order__order-id__tittle,
+.order__receiver__tittle,
+.order__status__tittle{
+  text-align: center;
+  font-size: 25px;
+  margin: 0 auto 10px;
+}
+.order__order-id__value,
+.order__receiver__value,
+.order__status__value{
+  text-align: center;
+  font-size: 20px;
+  margin: 0 auto 10px;
+}

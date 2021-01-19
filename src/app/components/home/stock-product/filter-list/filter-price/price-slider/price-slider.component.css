@@ -1,0 +1,51 @@
+.price-slider__values{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.price-slider__values_min,
+.price-slider__values_max{
+  display: block;
+  width: 40%;
+  border: #939393 solid 1px;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+.price-slider__values_separator{
+  flex-shrink: 0;
+  margin: 0 .4rem;
+  background-color: #babac0;
+  width: 1.1rem;
+  height: .2rem;
+}
+.price-slider__control{
+  margin-bottom: 15px;
+}
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-bubble{
+  display: none;
+}
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-selection{
+  background-color: #c01934;
+  height: 3px;
+  pointer-events: none;
+}
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-left-out-selection,
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-right-out-selection{
+  background-color: #939393;
+  height: 3px;
+  pointer-events: none;
+}
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-pointer-min,
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-pointer-max{
+  border-radius: 1em;
+  border: 2px solid #c01934;
+  cursor: pointer;
+  outline: none;
+  background-color: #FFFFFF !important;
+}
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-pointer-min:after,
+::ng-deep .price-slider__control .ng5-slider .ng5-slider-pointer-max:after{
+  background-color: #FFFFFF !important;
+}

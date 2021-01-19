@@ -1,0 +1,10 @@
+<div class="filter-list__price">
+  <div class="filter-list__price_close">
+    <p class="filter-list__price__title">Price</p>
+    <img [ngClass]="{'filter-list__price__icon_open': isFilterListPriceIconOpen, 'filter-list__price__icon_close': !isFilterListPriceIconOpen}"
+         src="./assets/static/images/open-filter-icon.png" (click)="clickIconListener()">
+  </div>
+  <div [ngClass]="{'filter-list__price__slider_open': isFilterListPriceOpen, 'filter-list__price__slider_close': !isFilterListPriceOpen}">
+    <app-price-slider [maxPriceValue]="maxPriceValue" [minPriceValue]="minPriceValue" (changeRangeEvent)="changeRangeEventListener($event)"></app-price-slider>
+  </div>
+</div>

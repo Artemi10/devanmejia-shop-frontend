@@ -1,0 +1,9 @@
+<div class="price-slider__values">
+  <input class="price-slider__values_min" type="number" step="1" min="{{minPriceValue}}" max="{{maxPriceValue}}" value="{{minInputPriceValue}}" (change)="minPriceValueInputChangeListener($event.target.value)">
+  <div class="price-slider__values_separator"></div>
+  <input class="price-slider__values_max" type="number" step="1" min="{{minPriceValue}}" max="{{maxPriceValue}}" value="{{maxInputPriceValue}}" (change)="maxPriceValueInputChangeListener($event.target.value)">
+</div>
+<div class="price-slider__control">
+  <ng5-slider [(value)]="minInputPriceValue" [(highValue)]="maxInputPriceValue" [options]="options" (highValueChange)="maxPriceValueChangeListener($event)" (valueChange)="minPriceValueChangeListener($event)"></ng5-slider>
+</div>
+

@@ -1,0 +1,21 @@
+.text-muted{
+  font-size: 15px;
+}
+.text-muted{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.footer__logo{
+  font-size: 25px;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+}
+.p-2, .footer-href{
+  text-decoration: none;
+}
+.p-2:hover, .footer-href, .footer__contacts{
+  color: #939393;
+}
+.footer-href:hover, .home-href{
+  color: #c01934;
+}

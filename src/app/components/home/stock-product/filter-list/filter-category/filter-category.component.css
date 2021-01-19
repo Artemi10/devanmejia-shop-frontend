@@ -1,0 +1,31 @@
+.filter-list__category{
+  border-bottom: solid #939393 1px;
+}
+.filter-list__category__title{
+  font-size: 25px;
+  color:  #939393;
+}
+.filter-list__category_close{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter-list__category__icon_close{
+  height: 24px;
+  width: 24px;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+.filter-list__category__icon_open{
+  height: 24px;
+  width: 24px;
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+.filter-list__category__types_close{
+  display: none;
+}
+.filter-list__category__types_open{
+  display: block;
+}
