@@ -30,7 +30,7 @@ export class AuthorizationService {
             if(error.status === 403){
               this.authenticationService.deleteRefreshToken();
               this.authenticationService.deleteAccessToken();
-              window.location.replace('/todolist')
+              window.location.replace('/logIn')
               return error;
             }
           })).toPromise()

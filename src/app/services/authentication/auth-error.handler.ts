@@ -8,7 +8,6 @@ export class AuthErrorHandler implements ErrorHandler{
 
   handleError(error: any): void {
     if(error.status===403 || error.status===500){
-      console.log(error)
       this.authenticationService.deleteAccessToken();
       this.authenticationService.deleteRefreshToken()
       window.location.replace('/logIn')
