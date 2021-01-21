@@ -39,15 +39,5 @@ export class StockProductComponent{
       this.stockProductService.sortStockProductsByName();
     }
   }
-
-
-
-
-
-
-
-
-
-
 }
 
