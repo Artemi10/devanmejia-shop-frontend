@@ -4,7 +4,7 @@
     <h3 class="stock-product__tittle">Range of our products</h3>
   </div>
 </div>
-<div class ="row no-gutters" >
+<div class ="row no-gutters" *ngIf="stockProductService.priceRangeStockProducts != null">
   <div class="col-lg-2 col-sm-3">
     <app-filter-list [maxPriceValue]="stockProductService.getMaxValuePrice()" [minPriceValue]="stockProductService.getMinValuePrice()" (changeRangePriceEvent)="changeRangePriceEventListener($event)"
                      (clickLowToHighSortButtonEvent)="clickLowToHighSortButtonEventListener($event)" (clickHighToLowSortButtonEvent)="clickHighToLowSortButtonEventListener($event)"></app-filter-list>
@@ -18,4 +18,7 @@
       </ng-container>
     </div>
   </div>
+</div>
+<div class ="row no-gutters" *ngIf="stockProductService.priceRangeStockProducts === undefined">
+  <img class="stock-product__loading-img" src="./assets/static/images/loading.gif">
 </div>

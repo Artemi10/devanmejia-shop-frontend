@@ -12,6 +12,7 @@ import {PriceRange} from "../../../models/price-range.model";
 })
 export class StockProductComponent{
   private currentPriceRange: PriceRange = null;
+
   constructor(public stockProductService: StockProductService) {}
 
   public changeRangePriceEventListener(value: PriceRange): void{

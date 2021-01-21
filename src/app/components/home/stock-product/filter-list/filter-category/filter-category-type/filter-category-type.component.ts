@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {StockProductService} from "../../../../../../services/stock-product/stock-product.service";
 
 @Component({
@@ -7,8 +7,7 @@ import {StockProductService} from "../../../../../../services/stock-product/stoc
   styleUrls: ['./filter-category-type.component.css']
 })
 export class FilterCategoryTypeComponent implements OnInit {
-  @Input()
-  public typeName: string;
+  @Input() public typeName: string;
   public isCheckBoxSelected: boolean = true;
   constructor(private stockProductService: StockProductService) { }
 
@@ -17,9 +16,9 @@ export class FilterCategoryTypeComponent implements OnInit {
   public clickCategoryTypeListener(): void {
     this.isCheckBoxSelected = !this.isCheckBoxSelected;
     if(this.isCheckBoxSelected){
-      this.stockProductService.setStockProductsFilterByCategoryType(this.typeName);
+      this.stockProductService.setStockProductsFilterByCategoryType(this.typeName.toUpperCase());
     }else{
-      this.stockProductService.deleteStockProductsFilterByCategoryType(this.typeName);
+      this.stockProductService.deleteStockProductsFilterByCategoryType(this.typeName.toUpperCase());
     }
   }
 

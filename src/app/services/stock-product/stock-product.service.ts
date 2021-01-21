@@ -10,9 +10,9 @@ import {AuthorizationService} from "../authorization/authorization.service";
   providedIn: 'root'
 })
 export class StockProductService {
-  public priceRangeStockProducts: StockProduct[] = [];
+  public priceRangeStockProducts: StockProduct[];
 
-  constructor(private http:HttpClient, private authorizationService: AuthorizationService) {
+  constructor(private http:HttpClient) {
     this.getAllStockProducts();
   }
 
@@ -56,7 +56,6 @@ export class StockProductService {
     }
   }
 
-
   public sortStockProductsLowToHigh(): void{
     this.priceRangeStockProducts.sort((a, b)=> a.productPrice >= b.productPrice? 1: -1);
   }
@@ -73,16 +72,14 @@ export class StockProductService {
       .forEach((stockProduct) => stockProduct.isChosenPriceRange = stockProduct.productPrice >= priceRange.minValuePrice && stockProduct.productPrice <= priceRange.maxValuePrice);
   }
   public setStockProductsFilterByCategoryType(categoryTypeName: string): void{
-    this.priceRangeStockProducts
-      .forEach((stockProduct) =>{
+    this.priceRangeStockProducts.forEach((stockProduct) =>{
         if(stockProduct.productType === categoryTypeName) {
           stockProduct.isChosenCategoryType = true;
         }
       });
   }
   public deleteStockProductsFilterByCategoryType(categoryTypeName: string): void{
-    this.priceRangeStockProducts
-      .forEach((stockProduct) => {
+    this.priceRangeStockProducts.forEach((stockProduct) => {
         if(stockProduct.productType === categoryTypeName) {
           stockProduct.isChosenCategoryType = false;
         }

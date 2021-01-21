@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {Options} from "ng5-slider";
-import {StockProductService} from "../../../../../../services/stock-product/stock-product.service";
 import {PriceRange} from "../../../../../../models/price-range.model";
 
 @Component({
@@ -26,6 +25,7 @@ export class PriceSliderComponent implements OnInit{
       ceil: this.maxPriceValue
     }
   }
+
   public minPriceValueInputChangeListener(valueString: string){
     let value: number = parseInt(valueString);
     if(value <= this.maxInputPriceValue){

@@ -80,7 +80,7 @@ const appRoutes: Routes= [
     provide: HTTP_INTERCEPTORS,
     useClass: AuthHeaderInterceptor,
     multi: true},
-    {provide:ErrorHandler, useClass:AuthErrorHandler},
+    {provide: ErrorHandler, useClass:AuthErrorHandler},
     {provide: APP_BASE_HREF, useValue:'/'}],
   bootstrap: [AppComponent]
 })

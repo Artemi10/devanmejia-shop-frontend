@@ -6,6 +6,11 @@
   margin-top: 10px;
   padding-bottom: 14px;
 }
+.stock-product__loading-img{
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+}
 
 
 

@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-filter-price',
   templateUrl: './filter-price.component.html',
   styleUrls: ['./filter-price.component.css']
 })
-export class FilterPriceComponent implements OnInit {
+export class FilterPriceComponent  {
   public isFilterListPriceOpen: boolean = false;
   public isFilterListPriceIconOpen: boolean = false;
   @Input() maxPriceValue: number;
@@ -13,9 +13,6 @@ export class FilterPriceComponent implements OnInit {
   @Output() changeRangePriceEvent = new EventEmitter();
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 
   public clickIconListener(): void{
