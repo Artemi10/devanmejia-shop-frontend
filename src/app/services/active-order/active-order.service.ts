@@ -10,13 +10,13 @@ import {AuthorizationService} from "../authorization/authorization.service";
 export class ActiveOrder {
   public cartProducts: CartProduct[] = [];
 
-  constructor(private http: HttpClient, private authorizationService: AuthorizationService) {
+  constructor(private http: HttpClient) {
     this.getCartsProductsFromActiveOrder();
   }
 
   public getCartsProductsFromActiveOrder(): void{
-    this.authorizationService.sendRefreshTokensRequestInterceptor(this.http.get(environment.apiUrl + '/api/cartProduct/active'))
-      .then((data: CartProduct[]) => this.cartProducts = data);
+    this.http.get(environment.apiUrl + '/api/cartProduct/active')
+      .subscribe((data: CartProduct[]) => this.cartProducts = data);
   }
 
   public findCartProductByName(cartProductName: string): CartProduct{

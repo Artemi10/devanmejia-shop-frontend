@@ -33,6 +33,7 @@ import { FilterSortComponent } from './components/home/stock-product/filter-list
 import { AddProductPopUpComponent } from './components/home/stock-product/product/add-product-pop-up/add-product-pop-up.component';
 import { CartComponent } from './components/home/cart/cart.component';
 import { ProductAmountComponent } from './components/home/header/product-amount/product-amount.component';
+import {RefreshTokenInterceptor} from "./services/authentication/refesh-token.interceptor";
 
 
 const appRoutes: Routes= [
@@ -77,9 +78,15 @@ const appRoutes: Routes= [
     ReactiveFormsModule
   ],
   providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthHeaderInterceptor,
-    multi: true},
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RefreshTokenInterceptor,
+      multi: true
+    },
     {provide: ErrorHandler, useClass:AuthErrorHandler},
     {provide: APP_BASE_HREF, useValue:'/'}],
   bootstrap: [AppComponent]

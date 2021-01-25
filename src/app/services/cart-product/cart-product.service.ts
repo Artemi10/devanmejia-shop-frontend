@@ -2,23 +2,21 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CartProduct} from "../../models/cart-product.model";
 import {environment} from "../../../environments/environment";
-import {AuthorizationService} from "../authorization/authorization.service";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartProductService {
 
-  constructor(private http:HttpClient, private authorizationService: AuthorizationService) { }
+  constructor(private http:HttpClient) { }
 
   public getCartProductsFromOrder(orderId: number): Promise<Object>{
-    return this.authorizationService
-      .sendRefreshTokensRequestInterceptor(this.http.get(environment.apiUrl + `/api/cartProduct/${orderId}`));
+    return this.http.get(environment.apiUrl + `/api/cartProduct/${orderId}`).toPromise();
   }
 
   public addProductToCart(productName: string, productAmount: number): Promise<Object>{
-    return this.authorizationService
-      .sendRefreshTokensRequestInterceptor(this.http.post(environment.apiUrl + '/api/cartProduct', {productName: productName, productAmount: productAmount}));
+    return this.http.post(environment.apiUrl + '/api/cartProduct', {productName: productName, productAmount: productAmount}).toPromise();
   }
 
   public addProduct(cartProduct:CartProduct){

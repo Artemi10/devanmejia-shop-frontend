@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {OrderCartProducts} from "../../models/order-cart-products.model";
-import {AuthorizationService} from "../authorization/authorization.service";
 import {environment} from "../../../environments/environment";
 
 @Injectable({
@@ -9,16 +8,14 @@ import {environment} from "../../../environments/environment";
 })
 export class OrdersService {
 
-  constructor(private http:HttpClient, private authorizationService: AuthorizationService) {}
+  constructor(private http:HttpClient) {}
 
   public getOrders(): Promise<Object>{
-    return this.authorizationService
-      .sendRefreshTokensRequestInterceptor(this.http.get(environment.apiUrl + "/api/orders"));
+    return this.http.get(environment.apiUrl + "/api/orders").toPromise();
   }
 
   public updateOrderByCartProducts(orderCartProducts: OrderCartProducts): Promise<Object>{
-    return this.authorizationService
-      .sendRefreshTokensRequestInterceptor(this.http.patch(environment.apiUrl +`api/orders/products`, orderCartProducts));
+    return this.http.patch(environment.apiUrl +`api/orders/products`, orderCartProducts).toPromise();
   }
 
 }
