@@ -1,11 +1,4 @@
-.cart-products__tittle{
-  font-size: 35px;
-  color:  #939393;
-  text-align: center;
-  margin-top: 10px;
-  padding-bottom: 14px;
-}
-.cart-products__tittle_error-message{
+.cart-products__error-message{
   font-size: 30px;
   color: #c01934;
   text-align: center;

@@ -12,8 +12,14 @@ export class CartComponent{
   public orders: Order[] = [];
   public selectedOrder: Order;
   public errorMessage: string;
+  public showOrderList: boolean;
+  public showCartProductsList: boolean;
 
   constructor(public ordersService: OrdersService) {
+    this.orders = [];
+    this.selectedOrder = null;
+    this.showCartProductsList = true;
+    this.showOrderList = true;
     this.errorMessage = '';
     this.updateOrders();
   }
@@ -49,4 +55,17 @@ export class CartComponent{
     }
   }
 
+  public clickOrdersListButtonEventListener(): void{
+    this.showOrderList = !this.showOrderList;
+  }
+  public clickCartProductButtonEventListener(): void{
+    this.showCartProductsList = !this.showCartProductsList;
+  }
+
+  public onResize(event: any){
+    if(event.target.innerWidth >= 768){
+      this.showCartProductsList = true;
+      this.showOrderList = true;
+    }
+  }
 }

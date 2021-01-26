@@ -8,8 +8,8 @@
 }
 .stock-product__loading-img{
   display: block;
-  margin: 0 auto;
   width: 40%;
+  margin: 0 auto 30px;
 }
 
 

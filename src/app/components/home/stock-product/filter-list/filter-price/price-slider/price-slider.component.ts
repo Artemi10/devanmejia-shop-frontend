@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input,  OnInit, Output} from '@angular/core';
 import {Options} from "ng5-slider";
 import {PriceRange} from "../../../../../../models/price-range.model";
 

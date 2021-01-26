@@ -1,5 +1,6 @@
 .filter-list__sort{
   border-bottom: solid #939393 1px;
+  margin-bottom: 15px;
 }
 .filter-list__sort__title{
   font-size: 25px;

@@ -5,12 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent {
+  public showSlider: boolean;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.showSlider = window.innerWidth >= 768;
   }
+
+  public onResize(event): void{
+    this.showSlider = event.target.innerWidth >= 768;
+  }
+
 
 
 }

@@ -1,5 +1,4 @@
-<div class="cart-products__tittle">List of your products</div>
-<div class="cart-products__tittle_error-message" *ngIf="errorMessage != ''">{{errorMessage}}</div>
+<div class="cart-products__error-message" *ngIf="errorMessage != ''">{{errorMessage}}</div>
 <p class="cart-products__order-id">Order ID:{{orderId}}</p>
 <div class="col-sm-12" *ngFor="let cartProduct of cartProducts">
   <app-cart-product [cartProduct]="cartProduct" [orderStatus]="orderStatus"></app-cart-product>

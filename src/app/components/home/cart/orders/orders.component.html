@@ -1,4 +1,3 @@
-<div class="orders__tittle">List of your orders</div>
 <div class="orders__order" *ngFor="let order of orders.reverse()">
     <app-order [order]="order" (chooseOrderEvent)="chooseOrderEventListener($event)"></app-order>
 </div>

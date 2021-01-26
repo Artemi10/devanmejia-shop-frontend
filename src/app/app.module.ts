@@ -34,6 +34,7 @@ import { AddProductPopUpComponent } from './components/home/stock-product/produc
 import { CartComponent } from './components/home/cart/cart.component';
 import { ProductAmountComponent } from './components/home/header/product-amount/product-amount.component';
 import {RefreshTokenInterceptor} from "./services/authentication/refesh-token.interceptor";
+import { CartTittleComponent } from './components/home/cart/cart-tittle/cart-tittle.component';
 
 
 const appRoutes: Routes= [
@@ -66,7 +67,8 @@ const appRoutes: Routes= [
     FilterSortComponent,
     AddProductPopUpComponent,
     CartComponent,
-    ProductAmountComponent
+    ProductAmountComponent,
+    CartTittleComponent
   ],
   imports: [
     CommonModule,

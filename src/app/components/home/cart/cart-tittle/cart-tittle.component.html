@@ -1,0 +1,12 @@
+<div class="product-panel" (window:resize)="onResize($event)">
+  <div [ngClass]="{'product-panel__tittle__row' : isButtonShown,
+                   'product-panel__tittle' : !isButtonShown,
+                   'product-panel__tittle_close' : !isPanelShown && isButtonShown}">
+    <p class="product-panel__tittle__content">{{tittle}}</p>
+    <img [ngClass]="{'product-panel__tittle__open-button_show' : isButtonShown,
+                     'product-panel__tittle__open-button' : !isButtonShown,
+                     'product-panel__tittle__open-button_open' : isPanelShown,
+                     'product-panel__tittle__open-button_close' : !isPanelShown}"
+         src="./assets/static/images/open-filter-icon.png" (click)="clickOpenButtonListener()">
+  </div>
+</div>

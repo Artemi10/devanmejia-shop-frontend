@@ -2,15 +2,11 @@
   cursor: pointer;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 10px;
 }
 .order:hover{
   border: solid 3px #939393;
-}
-.order__order-id,
-.order__receiver,
-.order__status{
-  width: 33%;
-  padding: 10px;
 }
 .order__order-id__tittle,
 .order__receiver__tittle,

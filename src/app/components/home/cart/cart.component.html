@@ -1,4 +1,11 @@
-<div class="cart">
-  <div class="cart__orders"><app-orders [orders]="orders" (chooseOrderEvent)="chooseOrderEventListener($event)"></app-orders></div>
-  <div class="cart__cart-products"><app-cart-products [errorMessage]="errorMessage" [orderId]="selectedOrder.id" [orderStatus]="selectedOrder.orderStatus" (clickBuyButtonEvent)="clickBuyButtonEventListener($event)"></app-cart-products></div>
+<div class="row no-gutters" (window:resize)="onResize($event)">
+  <div class="cart__orders col-xl-4 col-lg-5 col-md-5">
+    <app-cart-tittle [tittle]="'List of your orders'" (clickButtonEvent)="clickOrdersListButtonEventListener()"></app-cart-tittle>
+    <app-orders [orders]="orders" (chooseOrderEvent)="chooseOrderEventListener($event)" [ngClass]="{'cart__orders_close' : !showOrderList}"></app-orders>
+  </div>
+  <div class="cart__cart-products col-xl-8 col-lg-7 col-md-7">
+    <app-cart-tittle [tittle]="'List of your products'" (clickButtonEvent)="clickCartProductButtonEventListener()"></app-cart-tittle>
+    <app-cart-products *ngIf="selectedOrder != null" [errorMessage]="errorMessage" [orderId]="selectedOrder.id" [ngClass]="{'cart__cart-products_close' : !showCartProductsList}"
+                       [orderStatus]="selectedOrder.orderStatus" (clickBuyButtonEvent)="clickBuyButtonEventListener($event)"></app-cart-products>
+  </div>
 </div>

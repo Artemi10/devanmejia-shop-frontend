@@ -1,33 +1,31 @@
 .cart-product{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 10px;
 }
-.cart-product__image,
-.cart-product__name,
-.cart-product__amount{
-  width: 33%;
-}
+
 .cart-product__image img{
   display: block;
-  width: 80%;
+  height: 120px;
   border-radius: 5px;
   margin: 15px auto;
 }
 .cart-product__amount__tittle,
 .cart-product__name__tittle{
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   margin: 15px auto;
 }
 .cart-product__amount__counter_value,
 .cart-product__name__value{
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   margin: 0 auto 15px;
 }
 .cart-product__amount__counter{
   text-align: center;
-  font-size: 35px;
+  font-size: 25px;
 }
 .cart-product__amount__counter_minus{
   margin-right: 10px;

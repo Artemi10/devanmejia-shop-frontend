@@ -19,8 +19,8 @@ export class HeaderComponent {
     return (this.authenticationService.isAccessTokenExisted() &&!this.authenticationService.isAccessTokenExpired() &&this.authenticationService.getUserRole() === "ROLE_CLIENT")
       || this.authenticationService.isRefreshTokenExisted()
   }
-  public isHomePage(): boolean{
-    return this.router.url === '/';
+  public isCurrentPage(url: string): boolean{
+    return this.router.url === url;
   }
 
   public logOut(): void{

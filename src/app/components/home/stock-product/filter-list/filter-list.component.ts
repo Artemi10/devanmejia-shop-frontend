@@ -6,17 +6,20 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   templateUrl: './filter-list.component.html',
   styleUrls: ['./filter-list.component.css']
 })
-export class FilterListComponent implements OnInit {
+export class FilterListComponent {
   @Input() maxPriceValue: number;
   @Input() minPriceValue: number;
   @Output() changeRangePriceEvent = new EventEmitter();
   @Output() clickHighToLowSortButtonEvent = new EventEmitter();
   @Output() clickLowToHighSortButtonEvent = new EventEmitter();
+  public showFilters: boolean;
+  public showFiltersIcon: boolean
 
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor() {
+    this.showFiltersIcon = window.innerWidth < 576;
+    this.showFilters = !this.showFiltersIcon;
+  }
 
   public changeRangePriceEventListener(event: Event){
     this.changeRangePriceEvent.emit(event)
@@ -26,6 +29,19 @@ export class FilterListComponent implements OnInit {
   }
   public clickLowToHighSortButtonEventListener(value: boolean){
     this.clickLowToHighSortButtonEvent.emit(value);
+  }
+  public clickFiltersIconEventListener(){
+    this.showFilters = !this.showFilters;
+  }
+  public onResize(event){
+    if(event.target.innerWidth >= 576){
+      this.showFilters = true;
+      this.showFiltersIcon = false;
+    }
+    else{
+      this.showFilters = false;
+      this.showFiltersIcon = true;
+    }
   }
 
 }

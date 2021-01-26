@@ -12,7 +12,7 @@ export class CartProductsComponent implements OnInit, OnChanges{
   @Input() public orderId: number;
   @Input() public orderStatus: string;
   @Input() public errorMessage: string;
-  public cartProducts: CartProduct[];
+  public cartProducts: CartProduct[] = [];
   @Output() public clickBuyButtonEvent = new EventEmitter();
 
   constructor(private cartProductService: CartProductService) {}
