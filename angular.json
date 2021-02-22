@@ -67,7 +67,6 @@
           "configurations": {
             "production": {
               "browserTarget": "test-angular:build:production"
-
             }
           }
         },
@@ -120,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "test-angular"
+    }
+  },
+  "defaultProject": "test-angular",
+  "cli": {
+    "analytics": "d352e6b9-d795-4f5c-81f7-1c72a40aec05"
+  }
 }
