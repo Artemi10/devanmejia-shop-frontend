@@ -46,7 +46,10 @@ export class CheckCodeComponent implements OnDestroy{
           this.authenticationService.setRefreshToken(token.refreshToken);
         });
       })
-      .catch((error) => this.errorMessage = error.error);
+      .catch(() => {
+        this.errorMessage = 'Code is incorrect';
+        this.isRepeatButtonDisabled = false;
+      });
   }
 
   public repeatCode(): void{

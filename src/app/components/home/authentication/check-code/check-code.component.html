@@ -5,7 +5,7 @@
     <input class="code__form__input_login" [style.border-color]="checkInput('code') ? '#c01934' : '#939393'" type="text" placeholder="Write code" formControlName="code">
   </div>
   <p *ngIf="errorMessage != ''" class="code__form__warning">{{errorMessage}}</p>
- <app-timer *ngIf="isRepeatButtonDisabled" (timerStopEvent)="timerStopEventListener()"></app-timer>
+ <app-timer *ngIf="isRepeatButtonDisabled" (timerStopEvent)="timerStopEventListener()" [isButtonDisabled]="isRepeatButtonDisabled"></app-timer>
   <div class="code__form__buttons">
     <button [disabled]="codeForm.invalid"
             [ngClass]="{'code__form__buttons__button': !codeForm.invalid,
