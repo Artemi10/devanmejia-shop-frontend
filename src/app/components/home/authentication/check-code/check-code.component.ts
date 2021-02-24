@@ -14,11 +14,13 @@ export class CheckCodeComponent implements OnDestroy{
   public codeForm: FormGroup = new FormGroup({});
   public errorMessage = '';
   public isRepeatButtonDisabled: boolean;
+  public login: string;
 
   constructor(private authorizationService: AuthorizationService, private router: Router,
               private authenticationService: AuthenticationService) {
     this.codeForm.addControl('code', new FormControl('', Validators.required));
     this.isRepeatButtonDisabled = true;
+    this.login = this.authenticationService.getUserName();
   }
 
   ngOnDestroy(): void {
@@ -36,23 +38,48 @@ export class CheckCodeComponent implements OnDestroy{
 
   public sendCode(): void{
     const userCode = {
-      login : this.authenticationService.getUserName(),
+      login : this.login,
       code : this.codeForm.controls.code.value
     };
-    this.authorizationService.sendCheckCodeRequest(userCode)
-      .then((token: Token) => {
-        this.router.navigate(['/']).then(() => {
-          this.authenticationService.setAccessToken(token.accessToken);
-          this.authenticationService.setRefreshToken(token.refreshToken);
+    if (this.authenticationService.getUserRole() === 'ROLE_PASSWORD_RESET'){
+      this.authorizationService.sendCheckResetCodeRequest(userCode)
+        .then((data) => console.log(data))
+        .catch((error) => {
+          if (error.status === 200){
+            this.authenticationService.setAccessToken(error.error.text);
+            this.router.navigate(['/reset'])
+              .then(() => this.authenticationService.setAccessToken(error.error.text));
+          }
+          else{
+            this.isRepeatButtonDisabled = false;
+            this.errorMessage = error.error.text;
+          }
         });
-      })
-      .catch(() => {
-        this.errorMessage = 'Code is incorrect';
-        this.isRepeatButtonDisabled = false;
-      });
+    }
+    if (this.authenticationService.getUserRole() === 'ROLE_UNAUTH_USER'){
+      this.authorizationService.sendCheckLogInCodeRequest(userCode)
+        .then((token: Token) => {
+          this.router.navigate(['/']).then(() => {
+            this.authenticationService.setAccessToken(token.accessToken);
+            this.authenticationService.setRefreshToken(token.refreshToken);
+          });
+        })
+        .catch(() => {
+          this.errorMessage = 'Code is incorrect';
+          this.isRepeatButtonDisabled = false;
+        });
+    }
   }
 
   public repeatCode(): void{
-    // TODO
+    this.authorizationService.updateVerifyCodeRequest(this.login)
+      .then(() => {
+        this.errorMessage = '';
+        this.isRepeatButtonDisabled = true;
+      })
+      .catch(() => {
+        this.authenticationService.deleteAccessToken();
+        this.router.navigate(['/logIn']);
+    });
   }
 }

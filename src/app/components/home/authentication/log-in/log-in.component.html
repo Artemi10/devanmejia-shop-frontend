@@ -1,5 +1,6 @@
 <form [formGroup]="logInForm" (ngSubmit)="sendLogInRequest()" class="sign-up__form">
   <h1 class="log-in__form__header">LogIn Form</h1>
+  <p *ngIf="errorMessage != ''" class="log-in__form__warning">{{errorMessage}}</p>
   <div class="log-in__form__input">
     <div class="log-in__form__input_warning" *ngIf="checkInput('login')">Please, enter login</div>
     <input class="log-in__form__input_login" [style.border-color]="checkInput('login') ? '#c01934' : '#939393'"type="text" placeholder="Login" formControlName="login">
@@ -8,8 +9,12 @@
     <div class="log-in__form__input_warning" *ngIf="checkInput('password')">Please, enter password</div>
     <input class="log-in__form__input_password" [style.border-color]="checkInput('password') ? '#c01934' : '#939393'" type="password" placeholder="Password" formControlName="password">
   </div>
-  <p *ngIf="errorMessage != ''" class="log-in__form__warning">{{errorMessage}}</p>
+  <div class="log-in__form__warning_forget">
+    <a routerLink="/forget">Forget password?</a>
+  </div>
   <div class="log-in__form__input">
-    <button class="log-in__form__input_submit" [disabled]="logInForm.invalid">Submit</button>
+    <button [disabled]="logInForm.invalid"
+            [ngClass]="{'log-in__form__input_submit': !logInForm.invalid,
+            'log-in__form__input_submit_disabled': logInForm.invalid}">Submit</button>
   </div>
 </form>

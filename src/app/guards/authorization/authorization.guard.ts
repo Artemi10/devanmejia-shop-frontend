@@ -11,6 +11,11 @@ export class AuthorizationGuard implements CanActivate {
   }
 
   canActivate(): boolean {
+    if (this.authenticationService.isAccessTokenExisted() && !this.authenticationService.isAccessTokenExpired()
+      && this.authenticationService.getUserRole() === 'ROLE_UNAUTHUSER'){
+      this.router.navigate(['/checkCode']);
+      return false;
+    }
     if ((!this.authenticationService.isRefreshTokenExisted() && this.authenticationService.isAccessTokenExpired())
     || (!this.authenticationService.isRefreshTokenExisted() && !this.authenticationService.isAccessTokenExisted())) {
       return true;

@@ -6,15 +6,14 @@ import {AuthenticationService} from '../../services/authentication/authenticatio
 @Injectable({
   providedIn: 'root'
 })
-export class CheckCodeGuard implements CanActivate {
+export class ResetPasswordGuard implements CanActivate {
 
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
-  }
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   canActivate(): boolean {
     if (this.authenticationService.isAccessTokenExisted() && !this.authenticationService.isAccessTokenExpired()
-      && (this.authenticationService.getUserRole() === 'ROLE_UNAUTH_USER' || this.authenticationService.getUserRole() === 'ROLE_PASSWORD_RESET')){
+      && this.authenticationService.getUserRole() === 'ROLE_RESET_ALLOWED'){
       return true;
     }
     else{

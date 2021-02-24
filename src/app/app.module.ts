@@ -36,6 +36,9 @@ import { CartTittleComponent } from './components/home/cart/cart-tittle/cart-tit
 import { CheckCodeComponent } from './components/home/authentication/check-code/check-code.component';
 import { TimerComponent } from './components/home/authentication/check-code/timer/timer.component';
 import {CheckCodeGuard} from './guards/check-code/check-code.guard';
+import { ForgetPasswordComponent } from './components/home/authentication/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/home/authentication/reset-password/reset-password.component';
+import {ResetPasswordGuard} from './guards/reset-password/reset-password.guard';
 
 
 const appRoutes: Routes = [
@@ -43,7 +46,9 @@ const appRoutes: Routes = [
   {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
   {path: 'logIn', component: LogInComponent, canActivate: [AuthorizationGuard]},
   {path: 'signUp', component: SignUpComponent, canActivate: [AuthorizationGuard]},
-  {path: 'checkCode', component: CheckCodeComponent, canActivate: [CheckCodeGuard]}
+  {path: 'checkCode', component: CheckCodeComponent, canActivate: [CheckCodeGuard]},
+  {path: 'forget', component: ForgetPasswordComponent, canActivate: [AuthorizationGuard]},
+  {path: 'reset', component: ResetPasswordComponent, canActivate: [ResetPasswordGuard]}
 ];
 
 @NgModule({
@@ -72,7 +77,9 @@ const appRoutes: Routes = [
     ProductAmountComponent,
     CartTittleComponent,
     CheckCodeComponent,
-    TimerComponent
+    TimerComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

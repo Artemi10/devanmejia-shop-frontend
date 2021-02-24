@@ -19,13 +19,26 @@ export class AuthorizationService {
   public sendSignUpUserRequest(signUpForm: FormGroup): Promise<any>{
     return this.http.post(environment.apiUrl + '/api/auth/signUp', signUpForm).toPromise();
   }
-  public sendCheckCodeRequest(userCode): Promise<any>{
+  public sendCheckResetCodeRequest(userCode): Promise<any>{
+    return this.http.post(environment.apiUrl + '/api/reset/code', userCode).toPromise();
+  }
+  public sendCheckLogInCodeRequest(userCode): Promise<any>{
     return this.http.post(environment.apiUrl + '/api/verify/code', userCode).toPromise();
+  }
+  public updateVerifyCodeRequest(login: string): Promise<any>{
+    return this.http.patch(environment.apiUrl + '/api/verify/code/refresh', login).toPromise();
+  }
+  public resetPasswordRequest(login: string): Promise<any>{
+    return this.http.patch(environment.apiUrl + '/api/auth/reset', login).toPromise();
   }
   public sendRefreshTokensRequest(): Observable<any> {
     if (this.authenticationService.isAccessTokenExpired()) {
       return this.http.post(environment.apiUrl + '/api/auth/refresh', this.authenticationService.getRefreshToken());
     }
+  }
+  public updatePasswordRequest(newPassword: string): Observable<any>{
+    console.log(newPassword);
+    return this.http.patch(environment.apiUrl + '/api/change/pass', newPassword);
   }
 
 }

@@ -14,8 +14,8 @@ export class LogInComponent  {
   public logInForm: FormGroup = new FormGroup({});
   public errorMessage = '';
 
-  constructor(private authorizationService: AuthorizationService, private authenticationService: AuthenticationService,
-              private router: Router) {
+  constructor(private authorizationService: AuthorizationService, private router: Router,
+              private authenticationService: AuthenticationService) {
     this.logInForm.addControl('login', new FormControl('', Validators.required));
     this.logInForm.addControl('password', new FormControl('', Validators.required));
   }
