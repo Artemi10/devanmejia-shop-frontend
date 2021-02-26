@@ -29,7 +29,7 @@ export class ForgetPasswordComponent {
       .catch((error) => {
         if (error.status === 200){
           this.authenticationService.setAccessToken(error.error.text);
-          this.router.navigate(['/checkCode']);
+          this.router.navigate(['/checkReset']);
         }
         else {
           this.errorMessage = error.error.text;

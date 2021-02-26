@@ -39,6 +39,8 @@ import {CheckCodeGuard} from './guards/check-code/check-code.guard';
 import { ForgetPasswordComponent } from './components/home/authentication/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './components/home/authentication/reset-password/reset-password.component';
 import {ResetPasswordGuard} from './guards/reset-password/reset-password.guard';
+import { CheckResetCodeComponent } from './components/home/authentication/check-reset-code/check-reset-code.component';
+import {CheckResetCodeGuard} from './guards/check-reset-code/check-reset-code.guard';
 
 
 const appRoutes: Routes = [
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
   {path: 'logIn', component: LogInComponent, canActivate: [AuthorizationGuard]},
   {path: 'signUp', component: SignUpComponent, canActivate: [AuthorizationGuard]},
   {path: 'checkCode', component: CheckCodeComponent, canActivate: [CheckCodeGuard]},
+  {path: 'checkReset', component: CheckResetCodeComponent, canActivate: [CheckResetCodeGuard]},
   {path: 'forget', component: ForgetPasswordComponent, canActivate: [AuthorizationGuard]},
   {path: 'reset', component: ResetPasswordComponent, canActivate: [ResetPasswordGuard]}
 ];
@@ -79,7 +82,8 @@ const appRoutes: Routes = [
     CheckCodeComponent,
     TimerComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CheckResetCodeComponent
   ],
   imports: [
     CommonModule,

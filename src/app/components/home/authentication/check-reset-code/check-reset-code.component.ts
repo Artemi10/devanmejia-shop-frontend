@@ -1,16 +1,15 @@
-import {AfterViewInit, Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthorizationService} from '../../../../services/authorization/authorization.service';
-import {Token} from '../../../../models/token.model';
-import {AuthenticationService} from '../../../../services/authentication/authentication.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../../services/authentication/authentication.service';
 
 @Component({
-  selector: 'app-check-code',
-  templateUrl: './check-code.component.html',
-  styleUrls: ['./check-code.component.css']
+  selector: 'app-check-reset-code',
+  templateUrl: './check-reset-code.component.html',
+  styleUrls: ['./check-reset-code.component.css']
 })
-export class CheckCodeComponent implements OnDestroy{
+export class CheckResetCodeComponent implements OnDestroy {
   public codeForm: FormGroup = new FormGroup({});
   public errorMessage = '';
   public isRepeatButtonDisabled: boolean;
@@ -41,21 +40,23 @@ export class CheckCodeComponent implements OnDestroy{
       login : this.login,
       code : this.codeForm.controls.code.value
     };
-    this.authorizationService.sendCheckLogInCodeRequest(userCode)
-      .then((token: Token) => {
-        this.router.navigate(['/']).then(() => {
-          this.authenticationService.setAccessToken(token.accessToken);
-          this.authenticationService.setRefreshToken(token.refreshToken);
-        });
-      })
-      .catch(() => {
-        this.errorMessage = 'Code is incorrect';
-        this.isRepeatButtonDisabled = false;
+    this.authorizationService.sendCheckResetCodeRequest(userCode)
+      .then((data) => console.log(data))
+      .catch((error) => {
+        if (error.status === 200){
+          this.authenticationService.setAccessToken(error.error.text);
+          this.router.navigate(['/reset'])
+            .then(() => this.authenticationService.setAccessToken(error.error.text));
+        }
+        else{
+          this.isRepeatButtonDisabled = false;
+          this.errorMessage = 'Code is correct';
+        }
       });
   }
 
   public repeatCode(): void{
-    this.authorizationService.updateVerifyCodeRequest(this.login)
+    this.authorizationService.updateVerifyResetCodeRequest(this.login)
       .then(() => {
         this.errorMessage = '';
         this.isRepeatButtonDisabled = true;
@@ -63,6 +64,6 @@ export class CheckCodeComponent implements OnDestroy{
       .catch(() => {
         this.authenticationService.deleteAccessToken();
         this.router.navigate(['/logIn']);
-    });
+      });
   }
 }

@@ -28,6 +28,9 @@ export class AuthorizationService {
   public updateVerifyCodeRequest(login: string): Promise<any>{
     return this.http.patch(environment.apiUrl + '/api/verify/code/refresh', login).toPromise();
   }
+  public updateVerifyResetCodeRequest(login: string): Promise<any>{
+    return this.http.patch(environment.apiUrl + '/api/reset/code', login).toPromise();
+  }
   public resetPasswordRequest(login: string): Promise<any>{
     return this.http.patch(environment.apiUrl + '/api/auth/reset', login).toPromise();
   }
@@ -37,7 +40,6 @@ export class AuthorizationService {
     }
   }
   public updatePasswordRequest(newPassword: string): Observable<any>{
-    console.log(newPassword);
     return this.http.patch(environment.apiUrl + '/api/change/pass', newPassword);
   }
 
