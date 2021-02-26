@@ -15,7 +15,7 @@ export class OrdersService {
   }
 
   public updateOrderByCartProducts(orderCartProducts: OrderCartProducts): Promise<Object>{
-    return this.http.patch(environment.apiUrl +`api/orders/products`, orderCartProducts).toPromise();
+    return this.http.patch(environment.apiUrl +`/api/orders/products`, orderCartProducts).toPromise();
   }
 
 }
