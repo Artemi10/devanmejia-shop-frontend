@@ -1,0 +1,63 @@
+.sign-up__form{
+  margin: 0 auto;
+}
+.sign-up__form__header{
+  font-weight: normal;
+  text-align:center;
+  color:#939393;
+  margin-bottom: 20px;
+  font-size: 45px;
+}
+.sign-up__form__input_warning{
+  margin-bottom: 10px;
+}
+.sign-up__form__input{
+  text-align:center;
+}
+.sign-up__form__input input{
+  border: solid #939393 3px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+  outline: none;
+  border-radius: 5px;
+  width: 300px;
+}
+.log-in__form__warning{
+  margin-top: 10px;
+  text-align: center;
+  color: #c01934;
+}
+.sign-up__form__input_submit{
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  background-color: #939393;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+  width: 100px;
+  cursor: pointer;
+  margin-top: 10px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  outline: none !important;
+}
+.sign-up__form__input_submit_disabled{
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  background-color: rgba(147, 147, 147, 0.7);
+  padding: 5px;
+  font-size: 20px;
+  width: 100px;
+  cursor: pointer;
+  margin: 10px 7px;
+  height: 50px;
+  border-radius: 5px;
+  outline: none !important;
+  border: none;
+}
+.sign-up__form__input_submit:hover{
+  background-color: #c01934;
+}
+

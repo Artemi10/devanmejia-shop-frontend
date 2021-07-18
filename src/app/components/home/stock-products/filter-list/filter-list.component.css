@@ -1,0 +1,35 @@
+.filter-list__tittle{
+  font-size: 30px;
+  font-weight: bold;
+  color:  #939393;
+  text-align: center;
+}
+.filter-list__tittle_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter-list__tittle__icon{
+  display: none;
+  transform: rotate(180deg);
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+.filter-list__tittle__icon_open{
+  display: block;
+}
+.filter-list__tittle__icon_clicked{
+  transform: rotate(0deg);
+}
+.filter-list__filter_close{
+  display: none;
+}
+.filter-list__button{
+  display: block;
+  margin: 0 auto 40px;
+}
+.filter-list__button_close{
+  display: none;
+}

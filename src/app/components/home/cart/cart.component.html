@@ -2,10 +2,14 @@
   <div class="cart__orders col-xl-4 col-lg-5 col-md-5">
     <app-cart-tittle [tittle]="'List of your orders'" (clickButtonEvent)="clickOrdersListButtonEventListener()"></app-cart-tittle>
     <app-orders [orders]="orders" (chooseOrderEvent)="chooseOrderEventListener($event)" [ngClass]="{'cart__orders_close' : !showOrderList}"></app-orders>
+    <nav class="cart__orders__pages-nav">
+      <p class="cart__orders__pages-nav__link" (click)="changePage(page + 1)"
+         [ngClass]="{'selected' : pageNumber == page + 1}" *ngFor="let page of pages">{{page + 1}}</p>
+    </nav>
   </div>
   <div class="cart__cart-products col-xl-8 col-lg-7 col-md-7">
     <app-cart-tittle [tittle]="'List of your products'" (clickButtonEvent)="clickCartProductButtonEventListener()"></app-cart-tittle>
-    <app-cart-products *ngIf="selectedOrder != null" [errorMessage]="errorMessage" [orderId]="selectedOrder.id" [ngClass]="{'cart__cart-products_close' : !showCartProductsList}"
-                       [orderStatus]="selectedOrder.orderStatus" (clickBuyButtonEvent)="clickBuyButtonEventListener($event)"></app-cart-products>
+    <app-cart-products *ngIf="selectedOrder != null" [errorMessage]="errorMessage" [ngClass]="{'cart__cart-products_close' : !showCartProductsList}"
+                       [selectedOrder]="selectedOrder" (clickBuyButtonEvent)="clickBuyButtonEventListener($event)"></app-cart-products>
   </div>
 </div>

@@ -1,15 +1,17 @@
 <div class="card mb-4 shadow-sm cart-product">
-  <div class="cart-product__image"><img src="{{'data:image/jpg;base64,' + cartProduct.productImage}}"></div>
+  <div class="cart-product__image"><img src="{{cartProductImage}}"></div>
   <div class="cart-product__name">
-      <p class="cart-product__name__tittle">Product</p><br>
-      <p class="cart-product__name__value">{{cartProduct.productName}} {{cartProduct.productDescription}}</p>
+    <p class="cart-product__name__tittle">Product</p><br>
+    <p class="cart-product__name__value">{{cartProduct.product.name}} {{cartProduct.product.description}}</p>
+    <p class="cart-product__name__error" [style.visibility]="errorMessage != ''? 'visible' : 'hidden'">{{errorMessage}}</p>
   </div>
   <div class="cart-product__amount">
-    <p class="cart-product__amount__tittle">Amount</p><br>
+    <p class="cart-product__amount__tittle">Amount</p>
     <div class="cart-product__amount__counter">
-        <span class="btn btn-sm btn-outline-secondary cart-product__amount__counter_minus" *ngIf="isOrderActive(orderStatus)" (click)="cartProductService.deleteProduct(cartProduct)" >-</span>
+        <span class="btn btn-sm btn-outline-secondary cart-product__amount__counter_minus" *ngIf="isOrderActive(orderStatus)" (click)="deleteProduct()" >-</span>
         <span class="cart-product__amount__counter_value">{{cartProduct.amount}}</span>
-        <span class="btn btn-sm btn-outline-secondary cart-product__amount__counter_plus" *ngIf="isOrderActive(orderStatus)" (click)="cartProductService.addProduct(cartProduct)">+</span>
+        <span class="btn btn-sm btn-outline-secondary cart-product__amount__counter_plus" *ngIf="isOrderActive(orderStatus)" (click)="addProduct()">+</span>
     </div>
+    <button class="btn btn-sm btn-outline-secondary" [style.visibility]="showButton ? 'visible' : 'hidden'" (click)="addProductToCart()">Update</button>
   </div>
 </div>

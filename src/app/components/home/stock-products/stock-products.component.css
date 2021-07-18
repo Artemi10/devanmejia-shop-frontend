@@ -1,0 +1,28 @@
+.stock-product__tittle{
+  display: block;
+  font-size: 45px;
+  color:  #939393;
+  text-align: center;
+  margin-top: 10px;
+  padding-bottom: 14px;
+}
+.stock-product__loading-img{
+  display: block;
+  width: 40%;
+  margin: 0 auto 30px;
+}
+.stock-product__pages-nav{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.stock-product__pages-nav__link{
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+}
+.selected{
+  color: #999999;
+}
+
+

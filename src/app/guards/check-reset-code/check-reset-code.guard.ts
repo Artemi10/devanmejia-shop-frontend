@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
-import { Observable } from 'rxjs';
-import {AuthenticationService} from '../../services/authentication/authentication.service';
+import {CanActivate, Router} from '@angular/router';
+import {TokensService} from '../../services/tokens/tokens.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckResetCodeGuard implements CanActivate {
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private tokensService: TokensService, private router: Router) {
   }
 
   canActivate(): boolean {
-    if (this.authenticationService.isAccessTokenExisted() && !this.authenticationService.isAccessTokenExpired()
-      &&  this.authenticationService.getUserRole() === 'ROLE_PASSWORD_RESET'){
+    if (this.tokensService.isAccessTokenExisted() && !this.tokensService.isAccessTokenExpired()
+      &&  this.tokensService.getUserRole() === 'ROLE_RESET_USER'){
       return true;
     }
     else{

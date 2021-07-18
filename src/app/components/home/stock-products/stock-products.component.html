@@ -1,0 +1,27 @@
+<app-slider></app-slider>
+<div class ="row no-gutters">
+  <div class="col-sm-12">
+    <h3 class="stock-product__tittle">Range of our products</h3>
+  </div>
+</div>
+<div class ="row no-gutters" *ngIf="stockProducts.length != 0">
+  <div class="col-lg-2 col-sm-3">
+    <app-filter-list [(filterParam)]="filterParams" (filterParamChange)="filterParamChangeListener()"></app-filter-list>
+  </div>
+  <div class="col-lg-10 col-sm-9">
+    <div class="row no-gutters">
+      <ng-container *ngFor="let stockProduct of stockProducts">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <app-stock-product [stockProduct]="stockProduct"></app-stock-product>
+        </div>
+      </ng-container>
+    </div>
+    <nav class="stock-product__pages-nav">
+      <p class="stock-product__pages-nav__link" (click)="changePage(page + 1)"
+         [ngClass]="{'selected' : pageNumber == page + 1}" *ngFor="let page of pages">{{page + 1}}</p>
+    </nav>
+  </div>
+</div>
+<div class ="row no-gutters" *ngIf="stockProducts.length === 0">
+  <img class="stock-product__loading-img" src="./assets/static/images/loading.gif">
+</div>

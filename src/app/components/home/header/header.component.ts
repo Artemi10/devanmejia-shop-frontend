@@ -1,9 +1,6 @@
-import {Component, Injector} from '@angular/core';
-import {AuthenticationService} from "../../../services/authentication/authentication.service";
-import {OrdersService} from "../../../services/orders/orders.service";
-import {Order} from "../../../models/order.model";
-import {ActiveOrder} from "../../../services/active-order/active-order.service";
-import {Route, Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {TokensService} from '../../../services/tokens/tokens.service';
 
 
 @Component({
@@ -13,20 +10,20 @@ import {Route, Router} from "@angular/router";
 })
 export class HeaderComponent {
 
-  constructor(private authenticationService:AuthenticationService, private router: Router){}
+  constructor(private tokensService: TokensService, private router: Router){}
 
   public isExisted(): boolean{
-    return (this.authenticationService.isAccessTokenExisted() &&!this.authenticationService.isAccessTokenExpired() &&this.authenticationService.getUserRole() === "ROLE_CLIENT")
-      || this.authenticationService.isRefreshTokenExisted()
+    return (this.tokensService.isAccessTokenExisted() && !this.tokensService.isAccessTokenExpired()
+      && this.tokensService.getUserRole() === 'ROLE_USER') || this.tokensService.isRefreshTokenExisted();
   }
   public isCurrentPage(url: string): boolean{
     return this.router.url === url;
   }
 
   public logOut(): void{
-    this.authenticationService.deleteRefreshToken();
-    this.authenticationService.deleteAccessToken();
-    window.location.replace("/");
+    this.tokensService.deleteRefreshToken();
+    this.tokensService.deleteAccessToken();
+    this.router.navigate(['/']);
   }
 
 

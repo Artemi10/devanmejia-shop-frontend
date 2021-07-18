@@ -1,0 +1,23 @@
+<div class="add-product-pop-up">
+  <div class="add-product-pop-up__container">
+    <div class="add-product-pop-up__container__image">
+      <img src="{{productImage}}">
+    </div>
+    <div class="add-product-pop-up__container__content">
+      <p class="add-product-pop-up__container__content__tittle">Do you want to add {{stockProduct.product.name}} in cart?</p>
+      <p class="add-product-pop-up__container__content__description">{{stockProduct.product.price | price}} RUB for {{stockProduct.product.description}}</p>
+      <div class="add-product-pop-up__container__content__amount-slider">
+        <span class="btn btn-sm btn-outline-secondary add-product-pop-up__container__amount-slider__minus" (click)="deleteProduct()">-</span>
+        <span class="add-product-pop-up__container__amount-slider__amount">{{cartProductAmount}}</span>
+        <span class="btn btn-sm btn-outline-secondary add-product-pop-up__container__amount-slider__plus" (click)="addProduct()">+</span>
+      </div>
+      <p *ngIf="errorMessage != ''" class="add-product-pop-up__container__content__error-message">{{errorMessage}}</p>
+      <div class="add-product-pop-up__container__buttons">
+        <button class="btn btn-sm btn-outline-secondary add-product-pop-up__container__buttons__add" (click)="addProductToCart()">Add</button>
+        <button class="btn btn-sm btn-outline-secondary add-product-pop-up__container__buttons__close" (click)="closePopUp()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

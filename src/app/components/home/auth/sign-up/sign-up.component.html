@@ -1,0 +1,39 @@
+<form [formGroup]="signUpForm" (ngSubmit)="sendSignUpRequest()" class="sign-up__form">
+  <h1 class="sign-up__form__header">SignUp Form</h1>
+  <p *ngIf="errorMessage != ''" class="log-in__form__warning">{{errorMessage}}</p>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('firstName')">Please, enter first name</div>
+    <input class="sign-up__form__input_first-name" [style.border-color]="checkInput('firstName') ? '#c01934' : '#939393'" type="text" placeholder="First name" formControlName="firstName">
+  </div>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('lastName')">Please, enter last name</div>
+    <input class="sign-up__form__input_last-name" [style.border-color]="checkInput('lastName') ? '#c01934' : '#939393'"type="text" placeholder="Last name" formControlName="lastName">
+  </div>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('login')">Please, enter login</div>
+    <input class="sign-up__form__input_login" [style.border-color]="checkInput('login') ? '#c01934' : '#939393'"type="text" placeholder="Login" formControlName="login">
+  </div>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('password')">Please, enter password</div>
+    <input class="sign-up__form__input_password" [style.border-color]="checkInput('password') ? '#c01934' : '#939393'" type="password" placeholder="Password" formControlName="password">
+  </div>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('rePassword')">Please, confirm password</div>
+    <input class="sign-up__form__input_re-password" [style.border-color]="checkInput('rePassword') ? '#c01934' : '#939393'" type="password" placeholder="Repeat password" formControlName="rePassword">
+  </div>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('email')">Please, enter email</div>
+    <input class="sign-up__form__input_email" [style.border-color]="checkInput('email') ? '#c01934' : '#939393'"type="email" placeholder="Email" formControlName="email">
+  </div>
+  <div class="sign-up__form__input">
+    <div class="sign-up__form__input_warning" *ngIf="checkInput('birthDate')">Please, date of birth</div>
+    <input class="sign-up__form__input_date" [style.border-color]="checkInput('birthDate') ? '#c01934' : '#939393'" type="date" placeholder="Birthdate" formControlName="birthDate">
+  </div>
+  <div class="sign-up__form__input">
+    <button [disabled]="signUpForm.invalid"
+            [ngClass]="{'sign-up__form__input_submit': !signUpForm.invalid,
+            'sign-up__form__input_submit_disabled': signUpForm.invalid}">Submit</button>
+  </div>
+</form>
+
+

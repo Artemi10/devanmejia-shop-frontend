@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/core';
-import {OrdersService} from "../../../../services/orders/orders.service";
-import {Order} from "../../../../models/order.model";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Order} from '../../../../models/order/order.model';
 
 @Component({
   selector: 'app-orders',
@@ -12,13 +11,9 @@ export class OrdersComponent{
   @Output() public chooseOrderEvent = new EventEmitter();
   constructor() {}
 
-  public chooseOrderEventListener(order: Order){
+  public chooseOrderEventListener(order: Order): void{
     this.chooseOrderEvent.emit(order);
   }
-
-
-
-
 }
 
 

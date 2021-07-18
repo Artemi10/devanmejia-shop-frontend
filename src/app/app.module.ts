@@ -5,52 +5,53 @@ import {Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import {APP_BASE_HREF, CommonModule} from '@angular/common';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { SliderComponent } from './components/home/stock-product/slider/slider.component';
+import { SliderComponent } from './components/home/stock-products/slider/slider.component';
 import {HomeComponent} from './components/home/home.component';
-import {LogInComponent} from './components/home/authentication/log-in/log-in.component';
+import {LogInComponent} from './components/home/auth/log-in/log-in.component';
 import {OrdersComponent} from './components/home/cart/orders/orders.component';
 import {CartProductsComponent} from './components/home/cart/cart-products/cart-products.component';
-import {SignUpComponent} from './components/home/authentication/sign-up/sign-up.component';
+import {SignUpComponent} from './components/home/auth/sign-up/sign-up.component';
 import {FooterComponent} from './components/home/footer/footer.component';
 import {HeaderComponent} from './components/home/header/header.component';
-import {StockProductComponent} from './components/home/stock-product/stock-product.component';
-import {AuthenticationGuard} from './guards/authentication/authentication.guard';
-import {AuthErrorHandler} from './services/authentication/auth-error.handler';
-import {AuthHeaderInterceptor} from './services/authentication/auth-header.interceptor';
-import {AuthorizationGuard} from './guards/authorization/authorization.guard';
-import { ProductComponent } from './components/home/stock-product/product/product.component';
+import {StockProductsComponent} from './components/home/stock-products/stock-products.component';
+import {AuthErrorHandler} from './services/auth/auth-error.handler';
+import { StockProductComponent } from './components/home/stock-products/stock-product/stock-product.component';
 import { OrderComponent } from './components/home/cart/orders/order/order.component';
 import { CartProductComponent } from './components/home/cart/cart-products/cart-product/cart-product.component';
-import { FilterListComponent } from './components/home/stock-product/filter-list/filter-list.component';
-import { FilterCategoryComponent } from './components/home/stock-product/filter-list/filter-category/filter-category.component';
-import { FilterCategoryTypeComponent } from './components/home/stock-product/filter-list/filter-category/filter-category-type/filter-category-type.component';
-import { FilterPriceComponent } from './components/home/stock-product/filter-list/filter-price/filter-price.component';
-import { PriceSliderComponent } from './components/home/stock-product/filter-list/filter-price/price-slider/price-slider.component';
+import { FilterListComponent } from './components/home/stock-products/filter-list/filter-list.component';
+import { FilterCategoryComponent } from './components/home/stock-products/filter-list/filter-category/filter-category.component';
+import { FilterCategoryTypeComponent } from './components/home/stock-products/filter-list/filter-category/filter-category-type/filter-category-type.component';
+import { FilterPriceComponent } from './components/home/stock-products/filter-list/filter-price/filter-price.component';
+import { PriceSliderComponent } from './components/home/stock-products/filter-list/filter-price/price-slider/price-slider.component';
 import {Ng5SliderModule} from 'ng5-slider';
-import { FilterSortComponent } from './components/home/stock-product/filter-list/filter-sort/filter-sort.component';
-import { AddProductPopUpComponent } from './components/home/stock-product/product/add-product-pop-up/add-product-pop-up.component';
+import { FilterSortComponent } from './components/home/stock-products/filter-list/filter-sort/filter-sort.component';
+import { AddProductPopUpComponent } from './components/home/stock-products/stock-product/add-product-pop-up/add-product-pop-up.component';
 import { CartComponent } from './components/home/cart/cart.component';
 import { ProductAmountComponent } from './components/home/header/product-amount/product-amount.component';
-import {RefreshTokenInterceptor} from './services/authentication/refesh-token.interceptor';
+import {RefreshTokenInterceptor} from './services/tokens/refesh-token.interceptor';
 import { CartTittleComponent } from './components/home/cart/cart-tittle/cart-tittle.component';
-import { CheckCodeComponent } from './components/home/authentication/check-code/check-code.component';
-import { TimerComponent } from './components/home/authentication/check-code/timer/timer.component';
+import { CheckCodeComponent } from './components/home/auth/check-code/check-code.component';
+import { TimerComponent } from './components/home/auth/check-code/timer/timer.component';
 import {CheckCodeGuard} from './guards/check-code/check-code.guard';
-import { ForgetPasswordComponent } from './components/home/authentication/forget-password/forget-password.component';
-import { ResetPasswordComponent } from './components/home/authentication/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './components/home/auth/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/home/auth/reset-password/reset-password.component';
 import {ResetPasswordGuard} from './guards/reset-password/reset-password.guard';
-import { CheckResetCodeComponent } from './components/home/authentication/check-reset-code/check-reset-code.component';
+import { CheckResetCodeComponent } from './components/home/auth/check-reset-code/check-reset-code.component';
 import {CheckResetCodeGuard} from './guards/check-reset-code/check-reset-code.guard';
+import {MainGuard} from './guards/main/main.guard';
+import {AuthGuard} from './guards/auth/auth.guard';
+import {TokensHeaderInterceptor} from './services/tokens/tokens-header.interceptor';
+import { PricePipe } from './pipes/price.pipe';
 
 
 const appRoutes: Routes = [
-  {path: '', component: StockProductComponent},
-  {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
-  {path: 'logIn', component: LogInComponent, canActivate: [AuthorizationGuard]},
-  {path: 'signUp', component: SignUpComponent, canActivate: [AuthorizationGuard]},
+  {path: '', component: StockProductsComponent},
+  {path: 'cart', component: CartComponent, canActivate: [MainGuard]},
+  {path: 'logIn', component: LogInComponent, canActivate: [AuthGuard]},
+  {path: 'signUp', component: SignUpComponent, canActivate: [AuthGuard]},
   {path: 'checkCode', component: CheckCodeComponent, canActivate: [CheckCodeGuard]},
   {path: 'checkReset', component: CheckResetCodeComponent, canActivate: [CheckResetCodeGuard]},
-  {path: 'forget', component: ForgetPasswordComponent, canActivate: [AuthorizationGuard]},
+  {path: 'forget', component: ForgetPasswordComponent, canActivate: [AuthGuard]},
   {path: 'reset', component: ResetPasswordComponent, canActivate: [ResetPasswordGuard]}
 ];
 
@@ -64,9 +65,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     OrdersComponent,
     CartProductsComponent,
-    StockProductComponent,
+    StockProductsComponent,
     SliderComponent,
-    ProductComponent,
+    StockProductComponent,
     OrderComponent,
     CartProductComponent,
     FilterListComponent,
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     TimerComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-    CheckResetCodeComponent
+    CheckResetCodeComponent,
+    PricePipe
   ],
   imports: [
     CommonModule,
@@ -96,7 +98,7 @@ const appRoutes: Routes = [
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthHeaderInterceptor,
+      useClass: TokensHeaderInterceptor,
       multi: true
     },
     {

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {ActiveOrder} from "../../../../services/active-order/active-order.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {ActiveOrderService} from '../../../../services/active-order/active-order.service';
 
 @Component({
   selector: 'app-product-amount',
@@ -8,18 +7,21 @@ import {ActiveOrder} from "../../../../services/active-order/active-order.servic
   styleUrls: ['./product-amount.component.css']
 })
 export class ProductAmountComponent implements OnInit {
+  public cartProductAmount: number;
 
-  constructor(private activeOrder: ActiveOrder) { }
+  constructor(private activeOrderService: ActiveOrderService) {}
 
   ngOnInit(): void {
+    this.getCartProductAmount();
+    this.activeOrderService.addProductToCartEvent
+      .subscribe(() => this.getCartProductAmount());
+    this.activeOrderService.addProductToCartEvent
+      .subscribe((newAmount: number) => this.cartProductAmount += newAmount);
   }
 
-  public getAllCartProductAmount(): number{
-    let allCartProductAmount: number = 0;
-    for(let cartProduct of this.activeOrder.cartProducts){
-      allCartProductAmount += cartProduct.amount;
-    }
-    return allCartProductAmount;
+  public getCartProductAmount(): void{
+    this.activeOrderService.getCartProductsAmount()
+      .subscribe((amount: number) => this.cartProductAmount = amount);
   }
 
 }

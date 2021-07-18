@@ -10,3 +10,16 @@
 .cart__cart-products_close{
   display: none;
 }
+.cart__orders__pages-nav{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.cart__orders__pages-nav__link{
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+}
+.selected{
+  color: #999999;
+}

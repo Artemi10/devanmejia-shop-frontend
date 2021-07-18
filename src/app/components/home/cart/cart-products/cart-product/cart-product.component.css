@@ -4,18 +4,24 @@
   justify-content: space-around;
   padding: 20px 10px;
 }
-
+.cart-product__name__error{
+  font-size: 20px;
+}
 .cart-product__image img{
   display: block;
   height: 120px;
   border-radius: 5px;
   margin: 15px auto;
 }
+.cart-product__amount{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .cart-product__amount__tittle,
 .cart-product__name__tittle{
   text-align: center;
   font-size: 25px;
-  margin: 15px auto;
 }
 .cart-product__amount__counter_value,
 .cart-product__name__value{

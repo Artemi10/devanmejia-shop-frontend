@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import {ActiveOrderService} from './active-order.service';
 
-import { ActiveOrder } from './active-order.service';
+
 
 describe('ActiveOrderService', () => {
-  let service: ActiveOrder;
+  let service: ActiveOrderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ActiveOrder);
+    service = TestBed.inject(ActiveOrderService);
   });
 
   it('should be created', () => {

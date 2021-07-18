@@ -1,11 +1,13 @@
 <div class="cart-products__error-message" *ngIf="errorMessage != ''">{{errorMessage}}</div>
-<p class="cart-products__order-id">Order ID:{{orderId}}</p>
+<p class="cart-products__order-id">Order ID:{{selectedOrder.id}}</p>
 <div class="col-sm-12" *ngFor="let cartProduct of cartProducts">
-  <app-cart-product [cartProduct]="cartProduct" [orderStatus]="orderStatus"></app-cart-product>
+  <app-cart-product [cartProduct]="cartProduct" [orderStatus]="selectedOrder.status" (changeCartPriceEvent)="changeCartPriceListener($event)"></app-cart-product>
 </div>
 <p *ngIf="cartProducts.length === 0" class="cart-products_empty">Your cart is empty</p>
+<div class="cart-products__cart-price">{{cartPrice/100}} RUB</div>
 <div class="cart-products__order-button">
-  <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOrderActive(orderStatus) && cartProducts.length != 0" (click)="buyButtonClickListener()">Buy</button>
+  <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isOrderActive(selectedOrder.status) && cartProducts.length != 0" (click)="buyButtonClickListener()">Buy</button>
 </div>
+
 
 

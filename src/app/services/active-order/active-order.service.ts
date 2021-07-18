@@ -1,30 +1,29 @@
-import {Injectable, Injector} from '@angular/core';
-import {CartProduct} from "../../models/cart-product.model";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import {AuthorizationService} from "../authorization/authorization.service";
+import {Injectable, EventEmitter} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActiveOrder {
-  public cartProducts: CartProduct[] = [];
+export class ActiveOrderService {
+  public addProductToCartEvent = new EventEmitter();
+  public createActiveOrderEvent = new EventEmitter();
 
-  constructor(private http: HttpClient) {
-    this.getCartsProductsFromActiveOrder();
+  constructor(private http: HttpClient) {}
+
+  public getCartProductsAmount(): Observable<any>{
+    return this.http.get(`${environment.apiUrl}/shop/order/active/cartProducts/amount`);
+  }
+  public getCartProductAmount(productName: string): Observable<any>{
+    return this.http.get(`${environment.apiUrl}/shop/order/active/cartProducts/amount/${productName}`);
+  }
+  public createNewActiveOrder(): Observable<any>{
+    return this.http.post(`${environment.apiUrl}/shop/order/active`, {});
   }
 
-  public getCartsProductsFromActiveOrder(): void{
-    this.http.get(environment.apiUrl + '/api/cartProduct/active')
-      .subscribe((data: CartProduct[]) => this.cartProducts = data);
-  }
-
-  public findCartProductByName(cartProductName: string): CartProduct{
-    for(let cartProduct of this.cartProducts){
-      if(cartProduct.productName === cartProductName){
-        return cartProduct;
-      }
-    }
-    return null;
+  public setCartProductAmount(productName: string, newAmount: number): Observable<any>{
+    const cartProduct = { productName, newAmount};
+    return this.http.patch(`${environment.apiUrl}/shop/cartProduct`, cartProduct);
   }
 }

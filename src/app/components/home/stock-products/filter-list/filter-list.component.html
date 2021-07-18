@@ -1,0 +1,13 @@
+<div class="filter-list" (window:resize)="onResize($event)">
+  <div class="filter-list__tittle" [ngClass]="{'filter-list__tittle_row' : showFiltersIcon}">
+    <p class="filter-list__tittle__content">Filters</p>
+    <img class="filter-list__tittle__icon" src="./assets/static/images/open-filter-icon.png" (click)="clickFiltersIconEventListener()"
+         [ngClass]="{'filter-list__tittle__icon_open' : showFiltersIcon,
+                     'filter-list__tittle__icon_clicked' : showFilters}" >
+  </div>
+  <app-filter-category [ngClass]="{'filter-list__filter_close' : !showFilters}" (categoryTypesChangeEvent)="changeCategoryTypesListener($event)"></app-filter-category>
+  <app-filter-price [ngClass]="{'filter-list__filter_close' : !showFilters}" (changeRangePriceEvent)="changeRangePriceEventListener($event)"></app-filter-price>
+  <app-filter-sort [ngClass]="{'filter-list__filter_close' : !showFilters}" (clickHighToLowSortButtonEvent)="clickHighToLowSortButtonEventListener($event)"
+                   (clickLowToHighSortButtonEvent)="clickLowToHighSortButtonEventListener($event)"></app-filter-sort>
+  <button [ngClass]="{'filter-list__button_close' : !showFilters}" type="button" class="btn btn-lg btn-outline-secondary filter-list__button" (click)="clickShowButtonListener()">SHOW</button>
+</div>

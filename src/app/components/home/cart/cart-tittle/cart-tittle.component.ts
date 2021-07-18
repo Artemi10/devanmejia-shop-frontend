@@ -16,10 +16,10 @@ export class CartTittleComponent {
     this.isPanelShown = true;
   }
 
-  public onResize(event: any){
-    let width: number = event.target.innerWidth;
-    let isSmallVersion: boolean = width < 768;
-    if(isSmallVersion != this.isButtonShown){
+  public onResize(event: any): void{
+    const width: number = event.target.innerWidth;
+    const isSmallVersion: boolean = width < 768;
+    if (isSmallVersion !== this.isButtonShown){
       this.isButtonShown = width < 768;
       this.isPanelShown = true;
     }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Order} from "../../../../../models/order.model";
+import {Order} from '../../../../../models/order/order.model';
 
 @Component({
   selector: 'app-order',
@@ -14,8 +14,8 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public chooseOrderListener(){
-    this.chooseOrderEvent.emit(this.order)
+  public chooseOrderListener(): void{
+    this.chooseOrderEvent.emit(this.order);
   }
 
 }
