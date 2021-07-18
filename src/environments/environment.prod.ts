@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://devanmejia-shop-rest.herokuapp.com'
+  apiUrl: 'https://devanmejia-shop-gateway.herokuapp.com'
 };
